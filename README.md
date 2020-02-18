@@ -1,0 +1,1 @@
+# assetproj_springboot_jpa_thymeleaf

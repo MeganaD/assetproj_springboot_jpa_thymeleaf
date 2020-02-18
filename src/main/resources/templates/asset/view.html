@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header" />
+
+<body>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <div>
+            <div style="display: inline; margin-right: 10px;" th:text="|ID: ${asset.id}|">id : </div>
+            <a th:href="@{/asset/{id}/edit (id=${asset.id})}" class="btn btn-primary" role="button">수정</a>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>관리번호</th>
+                    <td th:text="${asset.mngNo}"></td>
+                    <th>상태</th>
+                    <td th:text="${asset.status}"></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td th:text="${asset.name}"></td>
+                    <th>사용자</th>
+                    <td th:text="${asset.user}"></td>
+                </tr>
+                <tr>
+                    <th>구매일자</th>
+                    <td th:text="${asset.purchasedDate}"></td>
+                    <th>구매가격</th>
+                    <td th:text="${asset.purchasedPrice}"></td>
+                </tr>
+                <tr>
+                    <th>용도</th>
+                    <td th:text="${asset.usage}"></td>
+                    <th>참고사항</th>
+                    <td th:text="${asset.description}"></td>
+                </tr>
+            </thead>
+            <tbody>
+
+        <div th:replace="fragments/footer :: footer" />
+    </div> <!-- /container -->
+    
+</body>
+</html>

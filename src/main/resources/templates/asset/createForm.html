@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <form role="form" action="/asset/new" th:object="${assetForm}" method="post">
+            <div class="form-group">
+                <label th:for="name">이름</label>
+                <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요" th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Message</p>
+            </div>
+            <div class="form-group">
+                <label th:for="user">사용자</label>
+                <input type="text" th:field="*{user}" class="form-control" placeholder="사용자를 입력하세요">
+            </div>
+
+            <div class="form-group">
+                <label th:for="mngNo">관리번호</label>
+                <input type="text" th:field="*{mngNo}" class="form-control" placeholder="관리번호를 입력하세요">
+            </div>
+            
+            <div class="form-group">
+                <label th:for="status">상태</label>
+                <select th:field="*{status}" class="form-control"> 
+                    <option th:each="status : ${T(io.esls.asset.domain.AssetStatus).values()}"
+                            th:value="${status}"
+                            th:text="${status}">option
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purchasedDate">구매일자</label>
+                <input type="date" th:field="*{purchasedDate}" class="form-control" placeholder="구매일자를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="purchasedPrice">구매가격</label>
+                <input type="number" th:field="*{purchasedPrice}" class="form-control" laceholder="구매가격을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label th:for="usage">용도</label>
+                <input type="text" th:field="*{usage}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label th:for="description">참고사항</label>
+                <input type="text" th:field="*{description}" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+        <div th:replace="fragments/footer :: footer" />
+    </div> <!-- /container -->
+    
+</body>
+</html>

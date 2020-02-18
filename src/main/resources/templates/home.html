@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <div class="jumbotron">
+            <h1>자산관리</h1>
+            <p>
+                <a class="btn btn-lg btn-secondary" href="/asset/new">자산 등록</a>
+                <a class="btn btn-lg btn-secondary" href="/asset">자산 목록</a> 
+            </p>
+            
+        </div>
+            
+        <div th:replace="fragments/footer :: footer" />
+    </div> <!-- /container -->
+</body>
+
+</html>

@@ -2,16 +2,16 @@ package io.esls.asset.domain;
 
 import javax.persistence.*;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
 
+@Getter @Setter
 @Entity
-@Getter @Setter 
-@NoArgsConstructor
 public class Asset {
 
-    @Id @GeneratedValue
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="asset_id")
 	private Long id;
     
@@ -25,5 +25,22 @@ public class Asset {
     private Integer purchasedPrice;
     private String usage;
     private String description;
+
+    public Asset() {}
+
+    @Builder
+    public Asset(String name, String mngNo, AssetStatus status, String user, String purchasedDate,
+            Integer purchasedPrice, String usage, String description) {
+        this.name = name;
+        this.mngNo = mngNo;
+        this.status = status;
+        this.user = user;
+        this.purchasedDate = purchasedDate;
+        this.purchasedPrice = purchasedPrice;
+        this.usage = usage;
+        this.description = description;
+    }
+
+    
 
 }
